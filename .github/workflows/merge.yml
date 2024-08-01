@@ -20,7 +20,7 @@ jobs:
       - name: status
         run: git status
       - name: descibe
-        run: git fetch --shallow-since 2023-08-17 --tags --recurse-submodules=no
+        run: git fetch --shallow-since "1 year" --tags --recurse-submodules=no
       - name: status
         run: git status
       - name: descibe
