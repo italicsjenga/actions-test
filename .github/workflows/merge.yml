@@ -11,16 +11,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: refs/heads/master
+          ref: refs/heads/main
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-tags: true
           # fetch-depth: 0
       # - name: stinky but
-      #   run: git sparse-checkout disable; git checkout origin/master
+      #   run: git sparse-checkout disable; git checkout origin/main
       - name: deepen tree
         run: git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
       # - name: peepee poopoo
-      #   run: git checkout --progress --force -B master refs/remotes/origin/master
+      #   run: git checkout --progress --force -B main refs/remotes/origin/main
       - name: Get git describe for prerelease
         id: describe
         run: echo "tagname=pre-$(git describe --tags)" >> $GITHUB_OUTPUT
