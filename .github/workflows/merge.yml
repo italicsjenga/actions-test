@@ -25,8 +25,6 @@ jobs:
         run: git fetch --tags --recurse-submodules=no --depth 100 origin main
       - name: status
         run: git status
-      - name: shallow
-        run: cat .git/shallow
       - name: descibe
         run: git describe --tags main
       - name: show refs
