@@ -19,10 +19,14 @@ jobs:
       #   run: git sparse-checkout disable; git checkout origin/main
       - name: status
         run: git status
-      - name: descibe
+      - name: shallow
+        run: cat .git/shallow
+      - name: deepend tree
         run: git fetch --shallow-since "1 year" --tags --recurse-submodules=no
       - name: status
         run: git status
+      - name: shallow
+        run: cat .git/shallow
       - name: descibe
         run: git describe --tags
       - name: show refs
