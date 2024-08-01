@@ -14,7 +14,7 @@ jobs:
           ref: refs/heads/main
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-tags: true
-          fetch-depth: 0
+          # fetch-depth: 0
       # - name: stinky but
       #   run: git sparse-checkout disable; git checkout origin/main
       - name: deepen tree
@@ -24,3 +24,5 @@ jobs:
       - name: Get git describe for prerelease
         id: describe
         run: echo "tagname=pre-$(git describe --tags)" >> $GITHUB_OUTPUT
+      - name: show describe
+        run: echo ${{ steps.describe.outputs.tagname }}
