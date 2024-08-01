@@ -23,6 +23,6 @@ jobs:
       #   run: git checkout --progress --force -B main refs/remotes/origin/main
       - name: Get git describe for prerelease
         id: describe
-        run: echo "tagname=pre-$(git describe --tags)" >> $GITHUB_OUTPUT
+        run: echo "tagname=pre-$(git describe --tags main)" >> $GITHUB_OUTPUT
       - name: show describe
         run: echo ${{ steps.describe.outputs.tagname }}
