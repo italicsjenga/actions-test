@@ -11,9 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: main
+          ref: refs/heads/main
           token: ${{ secrets.GITHUB_TOKEN }}
-          # fetch-tags: true
+          fetch-tags: true
           # fetch-depth: 0
       # - name: stinky but
       #   run: git sparse-checkout disable; git checkout origin/main
@@ -22,7 +22,14 @@ jobs:
       - name: shallow
         run: cat .git/shallow
       - name: deepen tree
-        run: git fetch --shallow-since 2023-08-17 --tags --recurse-submodules=no
+        run: git fetch --update-shallow --shallow-since 2023-08-17 --tags --recurse-submodules=no
+      # - name: deepen tree
+      #   run: |
+      #     depth=0
+      #     while ! git describe --tags main; do
+      #       depth=$((depth + 1))
+      #       git fetch --tags --recurse-submodules=no --depth $depth origin main
+      #     done
       - name: status
         run: git status
       - name: descibe
