@@ -19,10 +19,14 @@ jobs:
       #   run: git sparse-checkout disable; git checkout origin/main
       - name: status
         run: git status
+      - name: descibe
+        run: git describe --tags
       - name: deepen tree
         run: git fetch --shallow-since 2023-08-17 --tags --recurse-submodules=no
       - name: status
         run: git status
+      - name: descibe
+        run: git describe --tags
       - name: show refs
         run: find .git/refs
       # - name: peepee poopoo
