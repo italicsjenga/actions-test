@@ -22,7 +22,7 @@ jobs:
       - name: shallow
         run: cat .git/shallow
       - name: deepend tree
-        run: git fetch --tags --recurse-submodules=no --depth 100
+        run: git fetch --tags --recurse-submodules=no --depth 100 origin main
       - name: status
         run: git status
       - name: shallow
