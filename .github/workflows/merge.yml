@@ -32,6 +32,8 @@ jobs:
       #     done
       - name: status
         run: git status
+      - name: shallow
+        run: cat .git/shallow
       - name: descibe
         run: git describe --tags main
       - name: show refs
