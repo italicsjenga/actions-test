@@ -18,7 +18,7 @@ jobs:
       # - name: stinky but
       #   run: git sparse-checkout disable; git checkout origin/main
       - name: deepen tree
-        run: git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+        run: git fetch --shallow-since 2023-08-17 --tags --recurse-submodules=no
       # - name: peepee poopoo
       #   run: git checkout --progress --force -B main refs/remotes/origin/main
       - name: Get git describe for prerelease
