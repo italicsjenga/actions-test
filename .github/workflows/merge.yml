@@ -21,8 +21,13 @@ jobs:
         run: git status
       - name: shallow
         run: cat .git/shallow
-      - name: deepend tree
-        run: git fetch --tags --recurse-submodules=no --depth 100 origin main
+      - name: deepen tree
+        run: |
+          depth=0
+          while [ ! git describe --tags main]; do
+            depth=$((depth + 1))
+            git fetch --tags --recurse-submodules=no --depth $depth origin main
+          done
       - name: status
         run: git status
       - name: descibe
