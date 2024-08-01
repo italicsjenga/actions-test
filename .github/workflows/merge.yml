@@ -23,6 +23,8 @@ jobs:
         run: git fetch --shallow-since 2023-08-17 --tags --recurse-submodules=no
       - name: status
         run: git status
+      - name: show refs
+        run: find .git/refs
       # - name: peepee poopoo
       #   run: git checkout --progress --force -B main refs/remotes/origin/main
       - name: Get git describe for prerelease
