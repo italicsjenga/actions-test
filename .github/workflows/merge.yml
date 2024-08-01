@@ -1,0 +1,26 @@
+on:
+  pull_request:
+    types:
+      - closed
+jobs:
+  release:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    outputs:
+      tagname: ${{ steps.describe.outputs.tagname }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: refs/heads/master
+          token: ${{ secrets.GH_PAT }}
+          fetch-tags: true
+          # fetch-depth: 0
+      # - name: stinky but
+      #   run: git sparse-checkout disable; git checkout origin/master
+      - name: deepen tree
+        run: git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+      # - name: peepee poopoo
+      #   run: git checkout --progress --force -B master refs/remotes/origin/master
+      - name: Get git describe for prerelease
+        id: describe
+        run: echo "tagname=pre-$(git describe --tags)" >> $GITHUB_OUTPUT
