@@ -28,7 +28,7 @@ jobs:
       - name: shallow
         run: cat .git/shallow
       - name: descibe
-        run: git describe --tags
+        run: git describe --tags main
       - name: show refs
         run: find .git/refs
       # - name: peepee poopoo
